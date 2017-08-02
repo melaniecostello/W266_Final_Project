@@ -189,7 +189,7 @@ class RNNLM(object):
 
             # embedding_lookup gives x_ shape (batch_size, max_time, H)
             self.x_ = tf.nn.embedding_lookup(wordVectors, self.input_w_)
-            print self.x.shape
+            print self.x_.shape
             
 
         # Construct RNN/LSTM cell and recurrent layer.
