@@ -116,7 +116,7 @@ class RNNLM(object):
 
 
     @with_self_graph
-    def BuildCoreGraph(self):
+    def BuildCoreGraph(self, wordVectors):
         """Construct the core RNNLM graph, needed for any use of the model.
 
         This should include:
@@ -188,8 +188,8 @@ class RNNLM(object):
             self.W_in_ = tf.Variable(tf.random_uniform([self.V, self.H], 0, 1.0), name="W_in_")
 
             # embedding_lookup gives x_ shape (batch_size, max_time, H)
-            self.x_ = tf.nn.embedding_lookup(self.W_in_, self.input_w_)
-
+            self.x_ = tf.nn.embedding_lookup(wordVectors, self.input_w_)
+            print self.x.shape
             
 
         # Construct RNN/LSTM cell and recurrent layer.
